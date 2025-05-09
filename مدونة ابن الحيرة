@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>مدونة ابن الحيرة الإخبارية</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <style>
+
+#ibnAlHeeraTitle {
+  color: #ccc; /* لون عنوان المدونة */
+  text-shadow: 1px 3px 5px #000000; /* ظل خفيف لإبراز النص */
+   font-size: 40px;
+}
+
+#ibnAlHeeraPTitle {
+  color: #ccc; /* لون وصف المدونة */
+  text-shadow: 1px 1px 10px #000000; /* ظل خفيف لإبراز النص */
+  font-size: 20px;
+
+}
+
+    * { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Tahoma', sans-serif;
+      background-color: #87ac9e;
+      direction: rtl;
+      padding-top: 270px; /* لحساب الهيدر الثابت */
+      padding-bottom: 60px; /* لحساب الفوتر الثابت */
+    }
+    header {
+      background: linear-gradient(to left, #1a463d, #1a463d);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    #search-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+#search-input {
+  width: 90%;
+  max-width: 500px;
+  padding: 10px 14px;
+  font-size: 20px;
+  border: 2px solid #71aea2;
+  background-color: #246155; /* تغيير لون الخلفية هنا */
+  border-radius:  8px;
+  outline: none;
+  transition: 0.3s;
+}
+#search-input:focus {
+  border-color: #006600;
+  box-shadow: 0 0 5px #009900aa;
+}
+
+#quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+#quick-links button {
+  background: linear-gradient(to left, #2a6f62, #2a6f62);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+#quick-links button:hover {
+  background: linear-gradient(to right, #218838, #28a745);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+
+
+    nav {
+      background-color: #222;
+      overflow: hidden;
+      position: fixed;
+      top: 110px;
+      width: 100%;
+      z-index: 999;
+    }
+    nav a {
+      float: right;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 12px 16px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      background-color: #444;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+    .post {
+      background-color: white;
+      width: 300px;
+      margin: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .post:hover {
+      transform: scale(1.02);
+    }
+    .post img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .post-content {
+      padding: 15px;
+    }
+    .post-content a {
+      text-decoration: none;
+      color: #1a463d;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    .post-content time {
+  display: block;
+  font-weight: bold; /* جعل النص سميكًا */
+  color: color: #1a463d; /* لون اسود */
+  font-size: 1.02em; /* حجم النص */
+  margin-top: 25px; /* مسافة من الأعلى */
+  letter-spacing: 8px; /* زيادة المسافة بين الحروف */
+  text-transform: uppercase; /* تحويل النص إلى أحرف كبيرة */
+  background-color: rgba(0, 0, 0, 0.1); /* خلفية خفيفة */
+  padding: 3px 5px; /* إضافة بعض التباعد حول النص */
+  border-radius: 1px; /* حواف مدورة */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* إضافة ظل خفيف */
+}
+
+
+    footer {
+      background-color: #1a463d;
+      color: #ccc;
+      font-weight: bold; /* جعل النص سميكًا */
+      text-align: center;
+      padding: 15px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    #scrollTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      left: 20px;
+      z-index: 999;
+      font-size: 18px;
+      border: none;
+      outline: none;
+      background-color: #2f7d6e;
+      color: white;
+      cursor: pointer;
+      padding: 12px 16px;
+      border-radius: 50px;
+    }
+
+    /* Popup Styles */
+    #popup {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+    .popup-inner {
+      max-width: 95%;
+      background-color: #ebf3f2;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      position: relative;
+      text-align: center;
+      margin: 0 10px;
+    }
+    .popup-thumb {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .popup-title {
+      font-size: 1.3em;
+      color: #004d00;
+      margin-bottom: 10px;
+    }
+    .popup-body {
+      font-size: 1.1em;
+      color: #333;
+      text-align: justify;
+      line-height: 1.6;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+    .close-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #e00;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+  </style>
+</head>
+<body oncontextmenu="return false">
+
+  <header>
+    <h1 id="ibnAlHeeraTitle">ابن الحيرة</h1>
+<p id="ibnAlHeeraPTitle">تداول الاخبار اولا بأول</p>
+    <div id="search-bar">
+  <input type="text" id="search-input" placeholder="ابحث عن عنوان..." onkeyup="searchPosts()">
+  <div id="quick-links">
+    <button onclick="window.open('#', '_blank')">الرئيسية</button>
+    <button onclick="window.open('#', '_blank')">أخبار محلية</button>
+    <button onclick="window.open('#', '_blank')">رياضة</button>
+    <button onclick="window.open('#', '_blank')">سوق الحيرة</button>
+  </div>
+</div>
+
+  </header>
+
+  <nav>
+    <a href="#">الرئيسية</a>
+    <a href="#">أخبار محلية</a>
+    <a href="#">الرياضة</a>
+    <a href="#">ثقافة</a>
+    <a href="#">إتصل بنا</a>
+  </nav>
+
+  <div class="container" id="posts"></div>
+
+  <footer>
+  جميع الحقوق محفوظة &copy; <span id="current-year"></span> ابن الحيرة
+</footer>
+
+  <button onclick="scrollToTop()" id="scrollTopBtn">🡅</button>
+
+  <!-- Popup -->
+  <div id="popup">
+    <div id="popupContent"></div>
+  </div>
+
+  <script>
+    const feedUrl = "https://api.rss2json.com/v1/api.json?rss_url=https://admondstoreapps.blogspot.com/feeds/posts/default";
+
+    fetch(feedUrl)
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("posts");
+        data.items.forEach(item => {
+          const post = document.createElement("div");
+          post.className = "post";
+          const image = item.thumbnail || "https://via.placeholder.com/300x180?text=No+Image";
+          post.innerHTML = `
+            <img src="${image}" alt="${item.title}">
+            <div class="post-content">
+              <a href="#">${item.title}</a>
+              <time>📅 ${new Date(item.pubDate).toLocaleDateString("ar-EG")}</time>
+            </div>
+          `;
+          post.addEventListener("click", () => {
+            const popupContent = `
+              <div class="popup-inner">
+                <button class="close-btn" onclick="closePopup()">✕</button>
+                <img src="${image}" class="popup-thumb" alt="صورة المشاركة">
+                <h2 class="popup-title">${item.title}</h2>
+                <div class="popup-body">${item.content}</div>
+              </div>
+            `;
+            document.getElementById("popupContent").innerHTML = popupContent;
+            document.getElementById("popup").style.display = "flex";
+          });
+          container.appendChild(post);
+        });
+      })
+      .catch(err => {
+        document.getElementById("posts").innerHTML = "تعذر تحميل المشاركات.";
+        console.error(err);
+      });
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+      document.getElementById("popupContent").innerHTML = "";
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.onscroll = function() {
+      const btn = document.getElementById("scrollTopBtn");
+      btn.style.display = (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) ? "block" : "none";
+    };
+
+    function searchPosts() {
+      const input = document.getElementById("search-input").value.toLowerCase();
+      const posts = document.querySelectorAll(".post");
+      posts.forEach(post => {
+        const title = post.querySelector("a").textContent.toLowerCase();
+        post.style.display = title.includes(input) ? "block" : "none";
+      });
+    }
+
+// تعيين السنة الحالية تلقائيًا في الفوتر
+  document.getElementById("current-year").textContent = new Date().getFullYear();
+
+  </script>
+
+</body>
+</html>
+
