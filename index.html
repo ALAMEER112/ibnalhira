@@ -63,6 +63,22 @@
   box-shadow: 0 0 5px #009900aa;
 }
 
+  /* تنسيق الزر الرئيسي */
+  #quick-links button:nth-child(1) {
+    background: linear-gradient(to left, #007b5f, #062f24); /* تعديل اللون حسب الرغبة */
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  /* تأثير عند التمرير على زر الرئيسية */
+  #quick-links button:first-child:hover {
+    background: linear-gradient(to left, #006644, #218838); /* لون مختلف عند التمرير */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  }
+
+
 #quick-links {
   display: flex;
   flex-wrap: wrap;
@@ -120,7 +136,8 @@
     }
     .post {
       background-color: white;
-      width: 300px;
+      width: 90%; /* 90% من عرض الحاوية الأم */
+      max-width: 300px; /* الحد الأقصى لعرض الكارد */
       margin: 10px;
       border-radius: 10px;
       overflow: hidden;
@@ -133,7 +150,7 @@
     }
     .post img {
       width: 100%;
-      height: 180px;
+      height: 270px;
       object-fit: cover;
      object-position: center; /* يمكن تعديل هذه القيمة لضبط الصورة داخل الإطار */
     }
